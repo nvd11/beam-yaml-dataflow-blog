@@ -22,6 +22,9 @@ Beam YAML 解析器在运行时**不会**自动去 Maven 仓库或 PyPI 为您�
 
 要解决上述环境依赖问题，我们必须引入 GCP Dataflow 的高级部署机制：**Flex Template**。
 
+![Beam YAML Flex Template 架构图](./architecture.png)
+*图 1：Beam YAML 结合 Flex Template 的环境解耦与执行架构。左侧展示了本地开发打包环节，通过 Artifact Registry 的底层镜像与 GCS 的模板配置，实现了将静态运行环境与动态 YAML 逻辑完美分离的“套娃”打法。*
+
 Flex Template 的本质是：**一个 Docker Image (肉身) + 一个 JSON 说明书 (入口)。**
 
 当您将 Beam YAML 与 Flex Template 结合时，您实际上创造了一个“万能播放器”与“光盘”的解耦架构：
