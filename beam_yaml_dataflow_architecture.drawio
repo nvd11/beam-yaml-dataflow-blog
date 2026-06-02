@@ -6,37 +6,37 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         
-        <!-- Group 1: 准备工作 -->
-        <mxCell id="code_box" value="1. 开发与环境准备&#10;(Local Workspace / CI-CD)" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" vertex="1" parent="1">
+        <!-- Group 1: Setup -->
+        <mxCell id="code_box" value="1. Dev &amp; Env Setup&#10;(Local Workspace / CI-CD)" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="40" y="40" width="240" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="file_docker" value="Dockerfile&#10;(定义基础镜像与环境)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="code_box">
+        <mxCell id="file_docker" value="Dockerfile&#10;(Define Base Image &amp; Env)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="code_box">
           <mxGeometry x="40" y="60" width="160" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="file_req" value="requirements.txt&#10;(Python 依赖)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="code_box">
+        <mxCell id="file_req" value="requirements.txt&#10;(Python Dependencies)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="code_box">
           <mxGeometry x="40" y="110" width="160" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="file_jar" value="ojdbc8.jar等&#10;(外部数据库驱动)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="code_box">
+        <mxCell id="file_jar" value="ojdbc8.jar etc.&#10;(External DB Drivers)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="code_box">
           <mxGeometry x="40" y="160" width="160" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="file_main" value="main.py&#10;(Flex Template 启动器)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="code_box">
+        <mxCell id="file_main" value="main.py&#10;(Flex Template Launcher)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="code_box">
           <mxGeometry x="40" y="210" width="160" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="file_yaml" value="pipeline.yaml&#10;(业务逻辑)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontStyle=1" vertex="1" parent="code_box">
+        <mxCell id="file_yaml" value="pipeline.yaml&#10;(Business Logic)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontStyle=1" vertex="1" parent="code_box">
           <mxGeometry x="40" y="280" width="160" height="50" as="geometry" />
         </mxCell>
 
-        <!-- Group 2: 构建镜像 -->
-        <mxCell id="ar_node" value="Artifact Registry&#10;(Docker Image 大底座仓库)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+        <!-- Group 2: Build Image -->
+        <mxCell id="ar_node" value="Artifact Registry&#10;(Docker Base Image Repo)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="380" y="100" width="180" height="80" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_build" value="gcloud builds submit&#10;(打包基础环境)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#0000FF;" edge="1" parent="1" source="code_box" target="ar_node">
+        <mxCell id="edge_build" value="gcloud builds submit&#10;(Build Base Environment)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#0000FF;" edge="1" parent="1" source="code_box" target="ar_node">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Group 3: 注册模板 -->
-        <mxCell id="gcs_node" value="Cloud Storage (GCS)&#10;(Template JSON 说明书)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
+        <!-- Group 3: Template Registration -->
+        <mxCell id="gcs_node" value="Cloud Storage (GCS)&#10;(Template JSON Spec)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="660" y="100" width="180" height="80" as="geometry" />
         </mxCell>
         
@@ -44,18 +44,18 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Group 4: 运行态 Dataflow -->
-        <mxCell id="df_node" value="GCP Dataflow Cluster&#10;(Serverless Workers 执行态)" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;width=220;height=140;fontStyle=1" vertex="1" parent="1">
+        <!-- Group 4: Runtime Dataflow -->
+        <mxCell id="df_node" value="GCP Dataflow Cluster&#10;(Serverless Workers Runtime)" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;width=220;height=140;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="510" y="320" width="280" height="180" as="geometry" />
         </mxCell>
 
-        <!-- 运行时拉取镜像 -->
-        <mxCell id="edge_pull_image" value="1. 拉取大底座镜像" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.16;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="ar_node" target="df_node">
+        <!-- Pull Image -->
+        <mxCell id="edge_pull_image" value="1. Pull Base Image" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.16;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="ar_node" target="df_node">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- 运行时拉取模板 -->
-        <mxCell id="edge_pull_json" value="2. 读取模板配置" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.875;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="gcs_node" target="df_node">
+        <!-- Pull Template -->
+        <mxCell id="edge_pull_json" value="2. Read Template Config" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.875;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="gcs_node" target="df_node">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
