@@ -49,6 +49,9 @@ gcloud dataflow yaml run rcdp-etl-job-001 \
 ```
 **幕后黑箱揭秘**：此命令并未在本地编译任何 Docker 镜像。它自动将 YAML 上传至临时 GCS，并调用 GCP 官方维护的公共 Dataflow YAML Flex Template（预装了所有原生 Connector），瞬间拉起计算集群。效率极高，但扩展性受限。
 
+![gcloud yaml run 快捷部署流程图](./quick_run_architecture.png)
+*图 2：gcloud dataflow yaml run 快捷部署的底层交互流程。该架构展示了 GCP 如何在后台隐藏了繁琐的镜像构建与模板注册环节，通过调用预置的官方 Flex Template 与大底座镜像，实现了业务代码（YAML）的极速执行。*
+
 ### 方案 B：“企业级定制版” (适合带有 Oracle 等复杂依赖的架构)
 
 对于企业级数据中台（如 RCDP），我们需要构建包含各类数据库驱动的“万能大底座”。步骤如下：
